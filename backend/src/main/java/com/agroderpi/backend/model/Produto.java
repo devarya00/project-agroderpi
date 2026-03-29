@@ -1,9 +1,8 @@
-package com.agroderpi.backend.model; 
+package com.agroderpi.backend.model;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -11,30 +10,22 @@ import java.util.UUID;
 public class Produto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(nullable = false)
     private String nome;
-
-    @Column(nullable = false)
+    
     private String categoria;
-
-    @Column(nullable = false)
+    
     private BigDecimal preco;
 
-    @Column(name = "quantidade_estoque", nullable = false)
-    private BigDecimal quantidadeEstoque;
+    @Column(name = "quantidade_estoque")
+    private BigDecimal quantidadeEstoque; 
 
     @Column(name = "data_validade")
     private LocalDate dataValidade;
 
-    @Column(name = "criado_em", insertable = false, updatable = false)
-    private LocalDateTime criadoEm;
-
-    public Produto() {
-    }
-
+    // Getters and Setters
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
 
@@ -52,7 +43,4 @@ public class Produto {
 
     public LocalDate getDataValidade() { return dataValidade; }
     public void setDataValidade(LocalDate dataValidade) { this.dataValidade = dataValidade; }
-
-    public LocalDateTime getCriadoEm() { return criadoEm; }
-    public void setCriadoEm(LocalDateTime criadoEm) { this.criadoEm = criadoEm; }
 }
