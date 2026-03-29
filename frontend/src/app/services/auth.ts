@@ -20,9 +20,8 @@ export class AuthService {
     });
   }
 
-  // Helper to get the current session/token later
   async getSession() {
-    const { data, error } = await this.supabase.auth.getSession();
-    return data.session;
+    return await this.supabase.auth.getSession();
   }
+
 }
